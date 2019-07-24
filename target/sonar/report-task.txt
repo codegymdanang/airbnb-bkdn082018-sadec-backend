@@ -1,6 +1,0 @@
-projectKey=com.codegym:AirBnB
-serverUrl=http://codegymdanang.com:1051
-serverVersion=6.7.2.37468
-dashboardUrl=http://codegymdanang.com:1051/dashboard/index/com.codegym:AirBnB
-ceTaskId=AWwNh-KJ-XFxVvST9Cfd
-ceTaskUrl=http://codegymdanang.com:1051/api/ce/task?id=AWwNh-KJ-XFxVvST9Cfd
