@@ -27,7 +27,7 @@ public class NguoiDungEntity {
         this.id = id;
     }
 
-    @Column(name = "ten_nguoi_dung")
+    @Column(name = "ten_nguoi_dung", nullable = false)
     @NotBlank
     @Size(min = 3)
     public String getTenNguoiDung() {
@@ -38,7 +38,7 @@ public class NguoiDungEntity {
         this.tenNguoiDung = tenNguoiDung;
     }
 
-    @Column(name = "mat_khau")
+    @Column(name = "mat_khau", nullable = false)
     @NotBlank
     @Size(min = 8)
     public String getMatKhau() {
@@ -59,7 +59,7 @@ public class NguoiDungEntity {
         this.hoTen = hoTen;
     }
 
-    @Column(name = "so_dien_thoai")
+    @Column(name = "so_dien_thoai", nullable = false)
     @NotBlank
     @Pattern(regexp = "^0[0-9]{9}")
     public String getSoDienThoai() {
@@ -70,7 +70,7 @@ public class NguoiDungEntity {
         this.soDienThoai = soDienThoai;
     }
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     @NotBlank
     @Email
     public String getEmail() {
@@ -81,9 +81,9 @@ public class NguoiDungEntity {
         this.email = email;
     }
 
-    @Column(name = "dia_chi")
+    @Column(name = "dia_chi", nullable = false)
     @NotBlank
-    @Pattern(regexp = "[\\\\w,]{2,}\\\\w")
+//    @Pattern(regexp = "[\\\\w,]{2,}\\\\w")
     public String getDiaChi() {
         return diaChi;
     }

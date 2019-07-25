@@ -25,8 +25,7 @@ public class ThongBaoEntity {
         this.id = id;
     }
 
-    @Column(name = "noi_dung")
-    @NotNull
+    @Column(name = "noi_dung", nullable = false)
     public String getNoiDung() {
         return noiDung;
     }
@@ -35,8 +34,7 @@ public class ThongBaoEntity {
         this.noiDung = noiDung;
     }
 
-    @Column(name = "tinh_trang")
-    @NotNull
+    @Column(name = "tinh_trang", nullable = false)
     public boolean isTinhTrang() {
         return tinhTrang;
     }
@@ -46,7 +44,7 @@ public class ThongBaoEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nguoi_dung_id", nullable = false)
+    @JoinColumn(name = "nguoi_dung_id", referencedColumnName = "id", nullable = false)
     public NguoiDungEntity getNguoiDung() {
         return nguoiDung;
     }
@@ -56,7 +54,7 @@ public class ThongBaoEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ngoi_nha_id", nullable = false)
+    @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
     public NgoiNhaEntity getNgoiNha() {
         return ngoiNha;
     }
@@ -66,7 +64,7 @@ public class ThongBaoEntity {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "nhan_xet_va_phan_hoi_id", nullable = false)
+    @JoinColumn(name = "nhan_xet_va_phan_hoi_id", referencedColumnName = "id", nullable = false)
     public NhanXetVaPhanHoiEntity getNhanXet() {
         return nhanXet;
     }
@@ -75,8 +73,7 @@ public class ThongBaoEntity {
         this.nhanXet = nhanXet;
     }
 
-    @Column(name = "url")
-    @NotNull
+    @Column(name = "url", nullable = false)
     public String getUrl() {
         return url;
     }
