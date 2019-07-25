@@ -23,7 +23,7 @@ public class DanhGiaEntity {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nguoi_danh_gia_id", nullable = false)
+    @JoinColumn(name = "nguoi_danh_gia_id", referencedColumnName = "id", nullable = false)
     public NguoiDungEntity getNguoiDanhGia() {
         return nguoiDanhGia;
     }
@@ -33,7 +33,7 @@ public class DanhGiaEntity {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ngoi_nha_id", nullable = false)
+    @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
     public NgoiNhaEntity getNgoiNha() {
         return ngoiNha;
     }
@@ -42,8 +42,7 @@ public class DanhGiaEntity {
         this.ngoiNha = ngoiNha;
     }
 
-    @Column(name = "su_danh_gia")
-    @NotNull
+    @Column(name = "su_danh_gia", nullable = false)
     public int getSuDanhGia() {
         return suDanhGia;
     }

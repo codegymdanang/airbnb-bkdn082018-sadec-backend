@@ -1,5 +1,7 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -24,8 +26,8 @@ public class NhanXetVaPhanHoiEntity {
         this.id = id;
     }
 
-    @Column(name = "nguoi_dung_id")
-    @NotNull
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "nguoi_dung_id", referencedColumnName = "id", nullable = false)
     public NguoiDungEntity getNguoiDung() {
         return nguoiDung;
     }
@@ -34,8 +36,8 @@ public class NhanXetVaPhanHoiEntity {
         this.nguoiDung = nguoiDung;
     }
 
-    @Column(name = "ngoi_nha_id")
-    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
     public NgoiNhaEntity getNgoiNha() {
         return ngoiNha;
     }
@@ -44,8 +46,7 @@ public class NhanXetVaPhanHoiEntity {
         this.ngoiNha = ngoiNha;
     }
 
-    @Column(name = "noi_dung")
-    @NotNull
+    @Column(name = "noi_dung", nullable = false)
     public String getNoiDung() {
         return noiDung;
     }
@@ -54,8 +55,9 @@ public class NhanXetVaPhanHoiEntity {
         this.noiDung = noiDung;
     }
 
-    @Column(name = "nhan_xet")
-    @Null
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "nhan_xet_id", referencedColumnName = "id", nullable = true)
+    @JsonBackReference
     public NhanXetVaPhanHoiEntity getNhanXet() {
         return nhanXet;
     }
