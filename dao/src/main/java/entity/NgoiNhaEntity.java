@@ -30,7 +30,7 @@ public class NgoiNhaEntity {
     }
 
     @OneToOne
-    @JoinColumn(name = "chu_nha_id", nullable = false)
+    @JoinColumn(name = "chu_nha_id", referencedColumnName = "id", nullable = false)
     public NguoiDungEntity getChuNha() {
         return chuNha;
     }

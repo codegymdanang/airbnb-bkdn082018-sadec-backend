@@ -8,7 +8,7 @@ import java.awt.*;
 @Table(name = "hinh_anh_nha")
 public class HinhAnhNhaEntity {
     private long id;
-    private Image hinhAnh;
+    private byte[] hinhAnh;
     private NgoiNhaEntity ngoiNha;
 
     @Id
@@ -22,18 +22,17 @@ public class HinhAnhNhaEntity {
         this.id = id;
     }
 
-    @Column(name = "hinh_anh")
-    @NotNull
-    public Image getHinhAnh() {
+    @Column(name = "hinh_anh", nullable = false)
+    public byte[] getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(Image hinhAnh) {
+    public void setHinhAnh(byte[] hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ngoi_nha_id", nullable = false)
+    @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
     public NgoiNhaEntity getngoiNha() {
         return ngoiNha;
     }

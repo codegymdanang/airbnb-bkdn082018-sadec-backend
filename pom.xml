@@ -12,8 +12,6 @@
     <module>common</module>
     <module>business-service</module>
     <module>dao</module>
-    <module>webservice</module>
-    <module>test</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -28,17 +26,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>com.codegym</groupId>
-      <artifactId>dao</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>org.sonarsource.scanner.maven</groupId>

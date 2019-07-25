@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Repository
 public interface ThuNhapThangRepository extends PagingAndSortingRepository<ThuNhapThangEntity, Long> {
-    Page<ThuNhapThangEntity> findTopByThuNhap();
-
-    Page<ThuNhapThangEntity> findAllByThoiGian(Date thoiGian);
+//    Page<ThuNhapThangEntity> findTopByThuNhap();
+//
+//    Page<ThuNhapThangEntity> findAllByThoiGian(Date thoiGian);
 }
