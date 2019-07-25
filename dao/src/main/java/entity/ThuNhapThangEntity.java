@@ -25,9 +25,8 @@ public class ThuNhapThangEntity {
         this.id = id;
     }
 
-    @Column(name = "thoi_gian")
+    @Column(name = "thoi_gian", nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy/MM/dd")
-    @NotNull
     public Date getThoiGian() {
         return thoiGian;
     }
@@ -37,7 +36,7 @@ public class ThuNhapThangEntity {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chu_nha_id", nullable = false)
+    @JoinColumn(name = "chu_nha_id", referencedColumnName = "id", nullable = false)
     public NguoiDungEntity getchuNha() {
         return chuNha;
     }
@@ -46,8 +45,7 @@ public class ThuNhapThangEntity {
         this.chuNha = chuNha;
     }
 
-    @Column(name = "thu_nhap")
-    @NotNull
+    @Column(name = "thu_nhap", nullable = false)
     public float getThuNhap() {
         return thuNhap;
     }

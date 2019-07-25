@@ -30,7 +30,7 @@ public class LichSuThueNhaEntity {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nguoi_thue_id", nullable = false)
+    @JoinColumn(name = "nguoi_thue_id", referencedColumnName = "id", nullable = false)
     public NguoiDungEntity getNguoiThue() {
         return nguoiThue;
     }
@@ -40,7 +40,7 @@ public class LichSuThueNhaEntity {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nha_da_thue_id", nullable = false)
+    @JoinColumn(name = "nha_da_thue_id", referencedColumnName = "id", nullable = false)
     public NgoiNhaEntity getNhaDaThue() {
         return nhaDaThue;
     }
@@ -49,10 +49,9 @@ public class LichSuThueNhaEntity {
         this.nhaDaThue = nhaDaThue;
     }
 
-    @Column(name = "ngay_bat_dau_thue")
+    @Column(name = "ngay_bat_dau_thue", nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy/MM/dd")
     @Past
-    @NotNull
     public Date getNgayBatDauThue() {
         return ngayBatDauThue;
     }
@@ -61,7 +60,7 @@ public class LichSuThueNhaEntity {
         this.ngayBatDauThue = ngayBatDauThue;
     }
 
-    @Column(name = "ngay_ket_thuc")
+    @Column(name = "ngay_ket_thuc", nullable = true)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "yyyy/MM/dd")
     @Past
     public Date getNgayKetThuc() {
@@ -72,7 +71,7 @@ public class LichSuThueNhaEntity {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    @Column(name = "tong_ngay_thue")
+    @Column(name = "tong_ngay_thue", nullable = false)
     public int getTongNgayThue() {
         return tongNgayThue;
     }
@@ -81,7 +80,7 @@ public class LichSuThueNhaEntity {
         this.tongNgayThue = tongNgayThue;
     }
 
-    @Column(name = "tong_chi_phi")
+    @Column(name = "tong_chi_phi", nullable = false)
     public float getTongChiPhi() {
         return tongChiPhi;
     }

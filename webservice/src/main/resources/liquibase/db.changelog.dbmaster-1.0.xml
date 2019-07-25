@@ -4,40 +4,6 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-
-    <changeSet id="11" author="dung">
-        <createTable tableName="thu_nhap_thang">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="thoi_gian" type="date">
-                <constraints nullable="false"/>
-            </column>
-            <column name="thu_nhap" type="float">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet id="12" author="dung">
-        <createTable tableName="vai_tro">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="ten_vai_tro" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet id="12" author="dung">
-        <createTable tableName="vai_tro">
-            <column name="id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="ten_vai_tro" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
     <changeSet id="13" author="dung">
         <createTable tableName="nguoi_dung">
             <column name="id" type="bigint" autoIncrement="true">
@@ -49,7 +15,7 @@
             <column name="mat_khau" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="ten" type="nvarchar(50)">
+            <column name="ho_ten" type="nvarchar(50)">
                 <constraints nullable="false"/>
             </column>
             <column name="so_dien_thoai" type="varchar(10)">
@@ -61,23 +27,36 @@
             <column name="dia_chi" type="nvarchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="vai_tro_id" type="bigint">
+        </createTable>
+    </changeSet>
+
+    <changeSet id="11" author="dung">
+        <createTable tableName="thu_nhap_thang">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="chu_nha_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="thoi_gian" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="thu_nhap" type="float">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        
-        <addForeignKeyConstraint baseTableName="nguoi_dung"
-                                 baseColumnNames="vai_tro_id"
-                                 constraintName="fk_vai_tro_to_nguoi_dung"
-                                 referencedTableName="vai_tro"
+        <addForeignKeyConstraint baseTableName="thu_nhap_thang" baseColumnNames="chu_nha_id"
+                                 constraintName="fk_chu_nha_to_thu_nhap_thang"
+                                 referencedTableName="nguoi_dung"
                                  referencedColumnNames="id"/>
     </changeSet>
+
     <changeSet id="14" author="dung">
         <createTable tableName="ngoi_nha">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="ten_can_nha" type="nvarchar(255)">
+            <column name="ten_nha" type="nvarchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="so_luong_phong_ngu" type="int">
@@ -86,7 +65,7 @@
             <column name="so_luong_phong_tam" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="dia_chi_ngoi_nha" type="nvarchar(255)">
+            <column name="dia_chi" type="nvarchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="loai_nha" type="nvarchar(255)">
@@ -197,10 +176,10 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="ngui_thue_id" type="bigint">
+            <column name="nguoi_thue_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="ngoi_nha_nha_da_thue_id" type="bigint">
+            <column name="nha_da_thue_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="ngay_bat_dau_thue" type="date">
@@ -217,13 +196,13 @@
             </column>
         </createTable>
         <addForeignKeyConstraint baseTableName="lich_su_thue_nha"
-                                 baseColumnNames="ngoi_nha_nha_da_thue_id"
+                                 baseColumnNames="nha_da_thue_id"
                                  constraintName="fk_ngoi_nha_to_lich_su_thue_nha"
                                  referencedTableName="ngoi_nha"
                                  referencedColumnNames="id"/>
 
         <addForeignKeyConstraint baseTableName="lich_su_thue_nha"
-                                 baseColumnNames="ngui_thue_id"
+                                 baseColumnNames="nguoi_thue_id"
                                  constraintName="fk_nguoi_dung_to_lich_su_thue_nha"
                                  referencedTableName="nguoi_dung"
                                  referencedColumnNames="id"/>
@@ -245,7 +224,7 @@
             <column name="ngoi_nha_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="nhan_xet_id" type="bigint">
+            <column name="nhan_xet_va_phan_hoi_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="url" type="varchar(255)">
@@ -264,12 +243,10 @@
                                  referencedTableName="nguoi_dung"
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="thong_bao"
-                                 baseColumnNames="nhan_xet_id"
+                                 baseColumnNames="nhan_xet_va_phan_hoi_id"
                                  constraintName="fk_nhan_xet_va_phan_hoi_to_thong_bao"
                                  referencedTableName="nhan_xet_va_phan_hoi"
                                  referencedColumnNames="id"/>
     </changeSet>
-
-
 
 </databaseChangeLog>

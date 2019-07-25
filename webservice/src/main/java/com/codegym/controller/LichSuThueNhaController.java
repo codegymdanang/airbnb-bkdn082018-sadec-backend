@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -45,5 +46,15 @@ public class LichSuThueNhaController {
             return new ResponseEntity<Page<LichSuThueNhaEntity>>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Page<LichSuThueNhaEntity>>(lichSuThueNhaEntities, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/lich_su_thue_nha/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<LichSuThueNhaEntity> layLichSu(@PathVariable long id){
+        LichSuThueNhaEntity lichSuThueNhaEntity = this.lichSuThueNhaService.findById(id);
+         if (lichSuThueNhaEntity == null){
+             return new ResponseEntity<LichSuThueNhaEntity>(HttpStatus.NOT_FOUND);
+         }
+
+         return new ResponseEntity<LichSuThueNhaEntity>(lichSuThueNhaEntity, HttpStatus.OK);
     }
 }

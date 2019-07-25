@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DanhGiaRepository extends PagingAndSortingRepository<DanhGiaEntity, Long> {
-    Page<DanhGiaEntity> findAllByNgoiNha(String tenNha);
+//    Page<DanhGiaEntity> findAllByNgoiNha(String tenNha);
 }
