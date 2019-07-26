@@ -12,7 +12,7 @@
     <artifactId>business-service</artifactId>
     <packaging>war</packaging>
 
-    <name>business-service Maven Webapp</name>
+    <name>business-java.service Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -53,7 +53,7 @@
     </dependencies>
 
     <build>
-        <finalName>business-service</finalName>
+        <finalName>business-java.service</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

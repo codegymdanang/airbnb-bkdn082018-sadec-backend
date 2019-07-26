@@ -1,6 +1,5 @@
 package com.codegym.controller;
 
-import entity.ThongBaoEntity;
 import entity.ThuNhapThangEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

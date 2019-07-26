@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import repository.NgoiNhaRepository;
 import service.NgoiNhaService;
 
+
 @Service
 public class NgoiNhaServiceImpl implements NgoiNhaService {
     @Autowired
