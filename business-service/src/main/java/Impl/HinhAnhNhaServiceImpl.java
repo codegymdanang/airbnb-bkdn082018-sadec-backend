@@ -2,14 +2,11 @@ package Impl;
 
 import entity.HinhAnhNhaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import repository.HinhAnhNhaRepository;
+import jpaRepository.HinhAnhNhaRepository;
 import service.HinhAnhNhaService;
+
+import java.util.List;
 
 @Service
 public class HinhAnhNhaServiceImpl implements HinhAnhNhaService {
@@ -17,8 +14,8 @@ public class HinhAnhNhaServiceImpl implements HinhAnhNhaService {
     private HinhAnhNhaRepository hinhAnhNhaRepository;
 
     @Override
-    public Page<HinhAnhNhaEntity> findAll(Pageable pageable) {
-        return this.hinhAnhNhaRepository.findAll(pageable);
+    public List<HinhAnhNhaEntity> findAll() {
+        return (List<HinhAnhNhaEntity>) this.hinhAnhNhaRepository.findAll();
     }
 
     @Override

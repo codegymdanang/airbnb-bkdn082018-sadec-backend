@@ -2,8 +2,6 @@ package entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "nguoi_dung")

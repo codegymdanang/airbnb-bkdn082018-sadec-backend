@@ -1,4 +1,4 @@
-package repository;
+package jpaRepository;
 
 import entity.NgoiNhaEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;

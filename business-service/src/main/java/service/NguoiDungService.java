@@ -2,8 +2,10 @@ package service;
 
 import entity.NguoiDungEntity;
 
+import java.util.List;
+
 public interface NguoiDungService {
-    Iterable<NguoiDungEntity> findAll();
+    List<NguoiDungEntity> findAll();
 
     NguoiDungEntity findById(Long id);
 

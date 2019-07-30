@@ -2,8 +2,6 @@ package com.codegym.controller;
 
 import entity.NgoiNhaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,12 +10,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.NgoiNhaService;
 
+import java.util.List;
+
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class NgoiNhaController {
     @Autowired
     private NgoiNhaService ngoiNhaService;
 
-    @PostMapping(value = "/nha/")
+    @PostMapping(value = "/nha")
     public ResponseEntity<Void> taoNha(@RequestBody NgoiNhaEntity ngoiNhaEntity, UriComponentsBuilder uriComponentsBuilder){
         this.ngoiNhaService.save(ngoiNhaEntity);
 
@@ -27,13 +28,13 @@ public class NgoiNhaController {
         return new ResponseEntity<Void>(headers, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/nha/")
-    public ResponseEntity<Page<NgoiNhaEntity>> tatCaNha(Pageable pageable){
-        Page<NgoiNhaEntity> ngoiNhaEntities = ngoiNhaService.findAll(pageable);
+    @GetMapping(value = "/nha")
+    public ResponseEntity<List<NgoiNhaEntity>> tatCaNha(){
+        List<NgoiNhaEntity> ngoiNhaEntities = ngoiNhaService.findAll();
         if (ngoiNhaEntities.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<Page<NgoiNhaEntity>>(ngoiNhaEntities, HttpStatus.OK);
+        return new ResponseEntity<List<NgoiNhaEntity>>(ngoiNhaEntities, HttpStatus.OK);
     }
 
     @GetMapping(value = "/nha/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,7 +51,7 @@ public class NgoiNhaController {
         NgoiNhaEntity currentNgoiNhaEntity = this.ngoiNhaService.findById(id);
 
         if (currentNgoiNhaEntity == null){
-            return new ResponseEntity<NgoiNhaEntity>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         currentNgoiNhaEntity.setTenNha(ngoiNhaEntity.getTenNha());
@@ -58,14 +59,26 @@ public class NgoiNhaController {
         currentNgoiNhaEntity.setDiaChi(ngoiNhaEntity.getDiaChi());
         currentNgoiNhaEntity.setDanhGia(ngoiNhaEntity.getDanhGia());
         currentNgoiNhaEntity.setGiaTienTheoDem(ngoiNhaEntity.getGiaTienTheoDem());
-        currentNgoiNhaEntity.setLoaNha(ngoiNhaEntity.getLoaNha());
+        currentNgoiNhaEntity.setLoaiNha(ngoiNhaEntity.getLoaiNha());
         currentNgoiNhaEntity.setMoTaChung(ngoiNhaEntity.getMoTaChung());
         currentNgoiNhaEntity.setSoPhongNgu(ngoiNhaEntity.getSoPhongNgu());
         currentNgoiNhaEntity.setSoPhongTam(ngoiNhaEntity.getSoPhongTam());
         currentNgoiNhaEntity.setTinhTrang(ngoiNhaEntity.isTinhTrang());
+        currentNgoiNhaEntity.setHinhAnhNha(ngoiNhaEntity.getHinhAnhNha());
 
         this.ngoiNhaService.save(currentNgoiNhaEntity);
-        return new ResponseEntity<NgoiNhaEntity>(currentNgoiNhaEntity, HttpStatus.OK);
+        return new ResponseEntity<>(currentNgoiNhaEntity, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/nha/findBySoPhongNgu/{soPhongNgu}")
+    public ResponseEntity<List<NgoiNhaEntity>> findBySoPhongNgu(@PathVariable int soPhongNgu){
+        List<NgoiNhaEntity> ngoiNhaEntities = this.ngoiNhaService.findBySoPhongNgu(soPhongNgu);
+
+        if (ngoiNhaEntities.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(ngoiNhaEntities, HttpStatus.OK);
     }
 
 }

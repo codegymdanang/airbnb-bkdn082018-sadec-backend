@@ -1,4 +1,4 @@
-package repository;
+package jpaRepository;
 
 import entity.ThongBaoEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;

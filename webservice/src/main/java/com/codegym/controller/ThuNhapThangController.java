@@ -1,10 +1,7 @@
 package com.codegym.controller;
 
-import entity.ThongBaoEntity;
 import entity.ThuNhapThangEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.ThuNhapThangSerVice;
 
+import java.util.List;
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class ThuNhapThangController {
     @Autowired
@@ -29,14 +29,14 @@ public class ThuNhapThangController {
     }
 
     @GetMapping(value = "/thu_nhap_thang")
-    public ResponseEntity<Page<ThuNhapThangEntity>> tatCaThuNhapThang(Pageable pageable){
-        Page<ThuNhapThangEntity> thuNhapThangEntities = this.thuNhapThangSerVice.findAll(pageable);
+    public ResponseEntity<List<ThuNhapThangEntity>> tatCaThuNhapThang(){
+        List<ThuNhapThangEntity> thuNhapThangEntities = this.thuNhapThangSerVice.findAll();
 
         if (thuNhapThangEntities.isEmpty()){
-            return new ResponseEntity<Page<ThuNhapThangEntity>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<ThuNhapThangEntity>>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Page<ThuNhapThangEntity>>(thuNhapThangEntities, HttpStatus.OK);
+        return new ResponseEntity<List<ThuNhapThangEntity>>(thuNhapThangEntities, HttpStatus.OK);
     }
 
     @GetMapping(value = "/thu_nhap_thang/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

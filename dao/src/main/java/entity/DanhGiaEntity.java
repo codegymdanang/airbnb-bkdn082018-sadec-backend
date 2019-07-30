@@ -1,5 +1,7 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -23,7 +25,7 @@ public class DanhGiaEntity {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "nguoi_danh_gia_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "nguoi_danh_gia_id", nullable = false)
     public NguoiDungEntity getNguoiDanhGia() {
         return nguoiDanhGia;
     }
@@ -32,8 +34,9 @@ public class DanhGiaEntity {
         this.nguoiDanhGia = nguoiDanhGia;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ngoi_nha_id", nullable = false)
+    @JsonBackReference(value = "danhGia")
     public NgoiNhaEntity getNgoiNha() {
         return ngoiNha;
     }

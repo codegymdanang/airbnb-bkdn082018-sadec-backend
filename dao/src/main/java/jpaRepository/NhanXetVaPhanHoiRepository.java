@@ -1,9 +1,6 @@
-package repository;
+package jpaRepository;
 
-import entity.NgoiNhaEntity;
-import entity.NguoiDungEntity;
 import entity.NhanXetVaPhanHoiEntity;
-import org.springframework.data.domain.Page;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

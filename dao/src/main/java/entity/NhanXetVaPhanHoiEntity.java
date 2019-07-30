@@ -38,6 +38,7 @@ public class NhanXetVaPhanHoiEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference(value = "nhanXetVaPhanHoi")
     public NgoiNhaEntity getNgoiNha() {
         return ngoiNha;
     }
@@ -57,7 +58,7 @@ public class NhanXetVaPhanHoiEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "nhan_xet_id", referencedColumnName = "id", nullable = true)
-    @JsonBackReference
+    @JsonBackReference(value = "nhanXet")
     public NhanXetVaPhanHoiEntity getNhanXet() {
         return nhanXet;
     }

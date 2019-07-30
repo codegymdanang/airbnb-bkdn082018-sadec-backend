@@ -2,8 +2,6 @@ package com.codegym.controller;
 
 import entity.LichSuThueNhaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.LichSuThueNhaService;
 
+import java.util.List;
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class LichSuThueNhaController {
     @Autowired
@@ -39,13 +40,13 @@ public class LichSuThueNhaController {
     }
 
     @GetMapping(value = "/lich_su_thue_nha")
-    public ResponseEntity<Page<LichSuThueNhaEntity>> tatCaLichSu(Pageable pageable){
-        Page<LichSuThueNhaEntity> lichSuThueNhaEntities = this.lichSuThueNhaService.findAll(pageable);
+    public ResponseEntity<List<LichSuThueNhaEntity>> tatCaLichSu(){
+        List<LichSuThueNhaEntity> lichSuThueNhaEntities = this.lichSuThueNhaService.findAll();
 
         if (lichSuThueNhaEntities.isEmpty()){
-            return new ResponseEntity<Page<LichSuThueNhaEntity>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<LichSuThueNhaEntity>>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Page<LichSuThueNhaEntity>>(lichSuThueNhaEntities, HttpStatus.OK);
+        return new ResponseEntity<List<LichSuThueNhaEntity>>(lichSuThueNhaEntities, HttpStatus.OK);
     }
 
     @GetMapping(value = "/lich_su_thue_nha/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.NguoiDungService;
 
+//@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class NguoiDungController {
     @Autowired

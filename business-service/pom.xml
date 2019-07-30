@@ -12,7 +12,7 @@
     <artifactId>business-service</artifactId>
     <packaging>war</packaging>
 
-    <name>business-service Maven Webapp</name>
+    <name>business-java.service Maven Webapp</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -50,10 +50,21 @@
             <artifactId>spring-tx</artifactId>
             <version>5.1.8.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <version>3.1.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>business-service</finalName>
+        <finalName>business-java.service</finalName>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>

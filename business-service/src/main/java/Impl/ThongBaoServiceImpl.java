@@ -2,11 +2,11 @@ package Impl;
 
 import entity.ThongBaoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import repository.ThongBaoRepository;
+import jpaRepository.ThongBaoRepository;
 import service.ThongBaoService;
+
+import java.util.List;
 
 @Service
 public class ThongBaoServiceImpl implements ThongBaoService {
@@ -14,8 +14,8 @@ public class ThongBaoServiceImpl implements ThongBaoService {
     private ThongBaoRepository thongBaoRepository;
 
     @Override
-    public Page<ThongBaoEntity> findAll(Pageable pageable) {
-        return this.thongBaoRepository.findAll(pageable);
+    public List<ThongBaoEntity> findAll() {
+        return (List<ThongBaoEntity>) this.thongBaoRepository.findAll();
     }
 
     @Override

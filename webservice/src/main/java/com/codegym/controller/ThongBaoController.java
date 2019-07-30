@@ -2,8 +2,6 @@ package com.codegym.controller;
 
 import entity.ThongBaoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.ThongBaoService;
 
+import java.util.List;
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class ThongBaoController {
     @Autowired
@@ -28,13 +29,13 @@ public class ThongBaoController {
     }
 
     @GetMapping(value = "/thong_bao")
-    public ResponseEntity<Page<ThongBaoEntity>> tatCaThongBao(Pageable pageable){
-        Page<ThongBaoEntity> thongBaoEntities = this.thongBaoService.findAll(pageable);
+    public ResponseEntity<List<ThongBaoEntity>> tatCaThongBao(){
+        List<ThongBaoEntity> thongBaoEntities = this.thongBaoService.findAll();
 
         if (thongBaoEntities.isEmpty()){
-            return new ResponseEntity<Page<ThongBaoEntity>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<ThongBaoEntity>>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Page<ThongBaoEntity>>(thongBaoEntities, HttpStatus.OK);
+        return new ResponseEntity<List<ThongBaoEntity>>(thongBaoEntities, HttpStatus.OK);
     }
 
     @GetMapping(value = "/thong_bao/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

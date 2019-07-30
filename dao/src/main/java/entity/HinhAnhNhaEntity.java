@@ -1,5 +1,7 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.awt.*;
@@ -33,6 +35,7 @@ public class HinhAnhNhaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ngoi_nha_id", referencedColumnName = "id", nullable = false)
+    @JsonBackReference(value = "hinhAnh")
     public NgoiNhaEntity getngoiNha() {
         return ngoiNha;
     }
