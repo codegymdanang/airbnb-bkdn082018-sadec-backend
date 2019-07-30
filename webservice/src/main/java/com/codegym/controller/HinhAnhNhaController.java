@@ -2,14 +2,15 @@ package com.codegym.controller;
 
 import entity.HinhAnhNhaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.HinhAnhNhaService;
 
+import java.util.List;
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class HinhAnhNhaController {
     @Autowired
@@ -32,12 +33,12 @@ public class HinhAnhNhaController {
     }
 
     @GetMapping(value = "/hinh_anh_nha")
-    public ResponseEntity<Page<HinhAnhNhaEntity>> tatCaHinhAnhNha(Pageable pageable){
-        Page<HinhAnhNhaEntity> hinhAnhNhaEntities = this.hinhAnhNhaService.findAll(pageable);
+    public ResponseEntity<List<HinhAnhNhaEntity>> tatCaHinhAnhNha(){
+        List<HinhAnhNhaEntity> hinhAnhNhaEntities = this.hinhAnhNhaService.findAll();
 
         if (hinhAnhNhaEntities.isEmpty()){
-            return new ResponseEntity<Page<HinhAnhNhaEntity>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<HinhAnhNhaEntity>>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Page<HinhAnhNhaEntity>>(hinhAnhNhaEntities, HttpStatus.OK);
+        return new ResponseEntity<List<HinhAnhNhaEntity>>(hinhAnhNhaEntities, HttpStatus.OK);
     }
 }

@@ -1,4 +1,4 @@
-package repository;
+package jpaRepository;
 
 import entity.NguoiDungEntity;
 import org.springframework.data.repository.CrudRepository;

@@ -77,9 +77,6 @@
             <column name="mo_ta_chung" type="text">
                 <constraints nullable="false"/>
             </column>
-            <column name="danh_gia" type="float">
-                <constraints nullable="false"/>
-            </column>
             <column name="tinh_trang" type="boolean">
                 <constraints nullable="false"/>
             </column>

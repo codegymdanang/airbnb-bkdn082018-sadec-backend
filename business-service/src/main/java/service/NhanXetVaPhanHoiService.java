@@ -1,11 +1,11 @@
 package service;
 
 import entity.NhanXetVaPhanHoiEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface NhanXetVaPhanHoiService {
-    Page<NhanXetVaPhanHoiEntity> findAll(Pageable pageable);
+    List<NhanXetVaPhanHoiEntity> findAll();
 
     NhanXetVaPhanHoiEntity findById(Long id);
 

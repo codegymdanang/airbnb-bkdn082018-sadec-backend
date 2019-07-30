@@ -1,11 +1,11 @@
 package service;
 
 import entity.ThuNhapThangEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface ThuNhapThangSerVice {
-    Page<ThuNhapThangEntity> findAll(Pageable pageable);
+    List<ThuNhapThangEntity> findAll();
 
     ThuNhapThangEntity findById(Long id);
 

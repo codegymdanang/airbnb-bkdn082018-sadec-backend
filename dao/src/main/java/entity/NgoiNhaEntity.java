@@ -1,10 +1,16 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ngoi_nha")
+@Document(indexName = "airbnb", type = "nha")
 public class NgoiNhaEntity {
     private long id;
     private NguoiDungEntity chuNha;
@@ -12,11 +18,13 @@ public class NgoiNhaEntity {
     private int soPhongNgu;
     private int soPhongTam;
     private String diaChi;
-    private String loaNha;
+    private String loaiNha;
     private float giaTienTheoDem;
     private String moTaChung;
-    private float danhGia;
+    private Set<DanhGiaEntity> danhGia = new HashSet<>();
     private boolean tinhTrang;
+    private Set<HinhAnhNhaEntity> hinhAnhNha = new HashSet<>();
+    private Set<NhanXetVaPhanHoiEntity> nhanXetVaPhanHoi = new HashSet<>();
 
     @Id
     @Column(name = "id")
@@ -77,12 +85,12 @@ public class NgoiNhaEntity {
     }
 
     @Column(name = "loai_nha", nullable = false)
-    public String getLoaNha() {
-        return loaNha;
+    public String getLoaiNha() {
+        return loaiNha;
     }
 
-    public void setLoaNha(String loaNha) {
-        this.loaNha = loaNha;
+    public void setLoaiNha(String loaiNha) {
+        this.loaiNha = loaiNha;
     }
 
     @Column(name = "gia_tien_theo_dem", nullable = false)
@@ -103,12 +111,13 @@ public class NgoiNhaEntity {
         this.moTaChung = moTaChung;
     }
 
-    @Column(name = "danh_gia", nullable = false)
-    public float getDanhGia() {
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ngoiNha")
+    @JsonManagedReference(value = "danhGia")
+    public Set<DanhGiaEntity> getDanhGia() {
         return danhGia;
     }
 
-    public void setDanhGia(float danhGia) {
+    public void setDanhGia(Set<DanhGiaEntity> danhGia) {
         this.danhGia = danhGia;
     }
 
@@ -119,5 +128,25 @@ public class NgoiNhaEntity {
 
     public void setTinhTrang(boolean tinhTrang) {
         this.tinhTrang = tinhTrang;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ngoiNha")
+    @JsonManagedReference(value = "hinhAnh")
+    public Set<HinhAnhNhaEntity> getHinhAnhNha() {
+        return hinhAnhNha;
+    }
+
+    public void setHinhAnhNha(Set<HinhAnhNhaEntity> hinhAnhNha) {
+        this.hinhAnhNha = hinhAnhNha;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ngoiNha")
+    @JsonManagedReference(value = "nhanXetVaPhanHoi")
+    public Set<NhanXetVaPhanHoiEntity> getNhanXetVaPhanHoi() {
+        return nhanXetVaPhanHoi;
+    }
+
+    public void setNhanXetVaPhanHoi(Set<NhanXetVaPhanHoiEntity> nhanXetVaPhanHoi) {
+        this.nhanXetVaPhanHoi = nhanXetVaPhanHoi;
     }
 }

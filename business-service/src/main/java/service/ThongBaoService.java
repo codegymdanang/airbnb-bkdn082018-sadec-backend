@@ -1,11 +1,11 @@
 package service;
 
 import entity.ThongBaoEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface ThongBaoService {
-    Page<ThongBaoEntity> findAll(Pageable pageable);
+    List<ThongBaoEntity> findAll();
 
     ThongBaoEntity findById(Long id);
 

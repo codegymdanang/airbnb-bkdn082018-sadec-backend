@@ -3,8 +3,10 @@ package Impl;
 import entity.NguoiDungEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.NguoiDungRepository;
+import jpaRepository.NguoiDungRepository;
 import service.NguoiDungService;
+
+import java.util.List;
 
 @Service
 public class NguoiDungServiceImpl implements NguoiDungService {
@@ -12,8 +14,8 @@ public class NguoiDungServiceImpl implements NguoiDungService {
     private NguoiDungRepository nguoiDungRepository;
 
     @Override
-    public Iterable<NguoiDungEntity> findAll() {
-        return this.nguoiDungRepository.findAll();
+    public List<NguoiDungEntity> findAll() {
+        return (List<NguoiDungEntity>) this.nguoiDungRepository.findAll();
     }
 
     @Override

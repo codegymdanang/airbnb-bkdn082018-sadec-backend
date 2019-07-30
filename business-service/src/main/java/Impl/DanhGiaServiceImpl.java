@@ -2,11 +2,11 @@ package Impl;
 
 import entity.DanhGiaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import repository.DanhGiaRepository;
+import jpaRepository.DanhGiaRepository;
 import service.DanhGiaService;
+
+import java.util.List;
 
 @Service
 public class DanhGiaServiceImpl implements DanhGiaService {
@@ -14,8 +14,8 @@ public class DanhGiaServiceImpl implements DanhGiaService {
     private DanhGiaRepository danhGiaRepository;
 
     @Override
-    public Page<DanhGiaEntity> findAll(Pageable pageable) {
-        return this.danhGiaRepository.findAll(pageable);
+    public List<DanhGiaEntity> findAll() {
+        return (List<DanhGiaEntity>) this.danhGiaRepository.findAll();
     }
 
     @Override

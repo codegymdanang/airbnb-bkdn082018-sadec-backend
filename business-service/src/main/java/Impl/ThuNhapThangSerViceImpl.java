@@ -2,11 +2,11 @@ package Impl;
 
 import entity.ThuNhapThangEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import repository.ThuNhapThangRepository;
+import jpaRepository.ThuNhapThangRepository;
 import service.ThuNhapThangSerVice;
+
+import java.util.List;
 
 @Service
 public class ThuNhapThangSerViceImpl implements ThuNhapThangSerVice {
@@ -14,8 +14,8 @@ public class ThuNhapThangSerViceImpl implements ThuNhapThangSerVice {
     private ThuNhapThangRepository thuNhapThangRepository;
 
     @Override
-    public Page<ThuNhapThangEntity> findAll(Pageable pageable) {
-        return this.thuNhapThangRepository.findAll(pageable);
+    public List<ThuNhapThangEntity> findAll() {
+        return (List<ThuNhapThangEntity>) this.thuNhapThangRepository.findAll();
     }
 
     @Override

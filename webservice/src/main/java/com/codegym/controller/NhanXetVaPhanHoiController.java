@@ -2,8 +2,6 @@ package com.codegym.controller;
 
 import entity.NhanXetVaPhanHoiEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import service.NhanXetVaPhanHoiService;
 
+import java.util.List;
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class NhanXetVaPhanHoiController {
     @Autowired
@@ -29,14 +30,14 @@ public class NhanXetVaPhanHoiController {
     }
 
     @GetMapping(value = "/nhan_xet_va_phan_hoi")
-    public ResponseEntity<Page<NhanXetVaPhanHoiEntity>> tatCaNhanXetVaPhanHoi(Pageable pageable){
-        Page<NhanXetVaPhanHoiEntity> nhanXetVaPhanHoiEntities = this.nhanXetVaPhanHoiService.findAll(pageable);
+    public ResponseEntity<List<NhanXetVaPhanHoiEntity>> tatCaNhanXetVaPhanHoi(){
+        List<NhanXetVaPhanHoiEntity> nhanXetVaPhanHoiEntities = this.nhanXetVaPhanHoiService.findAll();
 
         if (nhanXetVaPhanHoiEntities.isEmpty()){
-            return new ResponseEntity<Page<NhanXetVaPhanHoiEntity>>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<List<NhanXetVaPhanHoiEntity>>(HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<Page<NhanXetVaPhanHoiEntity>>(nhanXetVaPhanHoiEntities, HttpStatus.OK);
+        return new ResponseEntity<List<NhanXetVaPhanHoiEntity>>(nhanXetVaPhanHoiEntities, HttpStatus.OK);
     }
 
     @GetMapping(value = "/nhan_xet_va_phan_hoi/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

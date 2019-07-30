@@ -1,15 +1,23 @@
 package service;
 
 import entity.NgoiNhaEntity;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface NgoiNhaService {
-    Page<NgoiNhaEntity> findAll(Pageable pageable);
+    List<NgoiNhaEntity> findAll();
 
-    NgoiNhaEntity findById(Long id);
+    NgoiNhaEntity findById(long id);
 
     void save(NgoiNhaEntity ngoiNhaEntity);
 
     void remove(Long id);
+
+    List<NgoiNhaEntity> findBySoPhongNgu(int soPhongNgu);
+
+    List<NgoiNhaEntity> findBySoPhongTam(int soPhongTam);
+
+    List<NgoiNhaEntity> findByDiaChi(String diaChi);
+
+    List<NgoiNhaEntity> findByGiaTienTheoDemBetween(float min, float max);
 }
