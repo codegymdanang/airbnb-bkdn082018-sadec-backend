@@ -245,5 +245,8 @@
                                  referencedTableName="nhan_xet_va_phan_hoi"
                                  referencedColumnNames="id"/>
     </changeSet>
+    <changeSet id="23142" author="hoang">
+        <modifyDataType tableName="nguoi_dung" columnName="mat_khau" newDataType="text"/>
+    </changeSet>
 
 </databaseChangeLog>

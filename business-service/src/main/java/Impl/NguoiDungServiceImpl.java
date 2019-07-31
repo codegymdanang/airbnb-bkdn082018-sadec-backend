@@ -12,10 +12,14 @@ import java.util.List;
 public class NguoiDungServiceImpl implements NguoiDungService {
     @Autowired
     private NguoiDungRepository nguoiDungRepository;
-
     @Override
     public List<NguoiDungEntity> findAll() {
         return (List<NguoiDungEntity>) this.nguoiDungRepository.findAll();
+    }
+
+    @Override
+    public NguoiDungEntity findByTenNguoiDung(String tenNguoiDung) {
+        return nguoiDungRepository.findByTenNguoiDung(tenNguoiDung);
     }
 
     @Override

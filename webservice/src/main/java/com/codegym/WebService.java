@@ -1,11 +1,14 @@
 package com.codegym;
 
+import jpaRepository.NguoiDungRepository;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -23,12 +26,16 @@ import java.net.InetAddress;
 @EntityScan(basePackages = "entity")
 @EnableJpaRepositories(basePackages = "jpaRepository")
 @EnableElasticsearchRepositories(basePackages = "elasticsearchRepository")
-@ComponentScan(basePackages = {"service", "Impl", "entity", "com.codegym.controller"})
-public class WebService {
+@ComponentScan(basePackages = {"service", "Impl", "entity", "com.codegym.controller","com.codegym.user"}, basePackageClasses = WebSecurityConfig.class)
+public class WebService implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication.run(WebService.class, args);
     }
+
+
+    @Autowired
+    private NguoiDungRepository nguoiDungRepository;
 
     @Value("${elasticsearch.host}")
     private String EsHost;
@@ -51,5 +58,14 @@ public class WebService {
                 .addTransportAddress(new TransportAddress(InetAddress.getByName("localhost"), 9300));
 
         return clientTransport;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        try {
+            System.out.println(nguoiDungRepository.findByTenNguoiDung("hoangpv6681"));
+        } catch (Exception e) {
+            System.out.println("Null");
+        }
     }
 }
