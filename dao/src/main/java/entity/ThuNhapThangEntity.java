@@ -53,4 +53,14 @@ public class ThuNhapThangEntity {
     public void setThuNhap(float thuNhap) {
         this.thuNhap = thuNhap;
     }
+
+    public ThuNhapThangEntity() {
+    }
+
+    public ThuNhapThangEntity(long id, Date thoiGian, NguoiDungEntity chuNha, float thuNhap) {
+        this.id = id;
+        this.thoiGian = thoiGian;
+        this.chuNha = chuNha;
+        this.thuNhap = thuNhap;
+    }
 }

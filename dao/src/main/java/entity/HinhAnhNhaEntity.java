@@ -43,4 +43,14 @@ public class HinhAnhNhaEntity {
     public void setngoiNha(NgoiNhaEntity ngoiNha) {
         this.ngoiNha = ngoiNha;
     }
+
+
+    public HinhAnhNhaEntity(long id, byte[] hinhAnh, NgoiNhaEntity ngoiNha) {
+        this.id = id;
+        this.hinhAnh = hinhAnh;
+        this.ngoiNha = ngoiNha;
+    }
+
+    public HinhAnhNhaEntity() {
+    }
 }

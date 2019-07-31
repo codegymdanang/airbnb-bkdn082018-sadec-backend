@@ -9,7 +9,7 @@ public interface LichSuThueNhaService {
 
     LichSuThueNhaEntity findById(Long id);
 
-    void save(LichSuThueNhaEntity lichSuThueNhaEntity);
+    LichSuThueNhaEntity save(LichSuThueNhaEntity lichSuThueNhaEntity);
 
     void remove(Long id);
 }

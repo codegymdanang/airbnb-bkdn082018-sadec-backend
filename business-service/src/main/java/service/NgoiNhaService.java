@@ -7,9 +7,9 @@ import java.util.List;
 public interface NgoiNhaService {
     List<NgoiNhaEntity> findAll();
 
-    NgoiNhaEntity findById(long id);
+    NgoiNhaEntity findById(Long id);
 
-    void save(NgoiNhaEntity ngoiNhaEntity);
+    NgoiNhaEntity save(NgoiNhaEntity ngoiNhaEntity);
 
     void remove(Long id);
 

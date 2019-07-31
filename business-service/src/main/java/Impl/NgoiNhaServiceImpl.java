@@ -21,18 +21,21 @@ public class NgoiNhaServiceImpl implements NgoiNhaService {
 
     @Override
     public List<NgoiNhaEntity> findAll() {
-        return IteratorUtils.toList(this.ngoiNhaRepository.findAll().iterator());
+        return IteratorUtils.toList(this.ngoiNhaESRepository.findAll().iterator());
     }
 
     @Override
-    public NgoiNhaEntity findById(long id) {
-        return this.ngoiNhaRepository.findById(id).get();
+    public NgoiNhaEntity findById(Long id) {
+        if (id.equals(null)){
+            return null;
+        }
+        return this.ngoiNhaESRepository.findById(id).get();
     }
 
     @Override
-    public void save(NgoiNhaEntity ngoiNhaEntity) {
+    public NgoiNhaEntity save(NgoiNhaEntity ngoiNhaEntity) {
         this.ngoiNhaESRepository.save(ngoiNhaEntity);
-        this.ngoiNhaRepository.save(ngoiNhaEntity);
+        return this.ngoiNhaRepository.save(ngoiNhaEntity);
     }
 
     @Override

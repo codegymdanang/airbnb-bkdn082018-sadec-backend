@@ -9,7 +9,7 @@ public interface DanhGiaService {
 
     DanhGiaEntity findById(Long id);
 
-    void save(DanhGiaEntity danhGiaEntity);
+    DanhGiaEntity save(DanhGiaEntity danhGiaEntity);
 
     void remove(Long id);
 }

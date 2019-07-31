@@ -20,12 +20,15 @@ public class NhanXetVaPhanHoiServiceImpl implements NhanXetVaPhanHoiService {
 
     @Override
     public NhanXetVaPhanHoiEntity findById(Long id) {
+        if (id.equals(null)){
+            return null;
+        }
         return this.nhanXetVaPhanHoiRepository.findById(id).get();
     }
 
     @Override
-    public void save(NhanXetVaPhanHoiEntity danhGiaEntity) {
-        this.nhanXetVaPhanHoiRepository.save(danhGiaEntity);
+    public NhanXetVaPhanHoiEntity save(NhanXetVaPhanHoiEntity danhGiaEntity) {
+        return this.nhanXetVaPhanHoiRepository.save(danhGiaEntity);
     }
 
     @Override

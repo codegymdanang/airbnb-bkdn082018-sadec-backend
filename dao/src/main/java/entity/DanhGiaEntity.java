@@ -53,4 +53,14 @@ public class DanhGiaEntity {
     public void setSuDanhGia(int suDanhGia) {
         this.suDanhGia = suDanhGia;
     }
+
+    public DanhGiaEntity(long id, NguoiDungEntity nguoiDanhGia, NgoiNhaEntity ngoiNha, int suDanhGia) {
+        this.id = id;
+        this.nguoiDanhGia = nguoiDanhGia;
+        this.ngoiNha = ngoiNha;
+        this.suDanhGia = suDanhGia;
+    }
+
+    public DanhGiaEntity() {
+    }
 }

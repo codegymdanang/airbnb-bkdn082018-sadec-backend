@@ -9,7 +9,7 @@ public interface ThongBaoService {
 
     ThongBaoEntity findById(Long id);
 
-    void save(ThongBaoEntity thongBaoEntity);
+    ThongBaoEntity save(ThongBaoEntity thongBaoEntity);
 
     void remove(long id);
 }

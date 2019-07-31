@@ -88,4 +88,17 @@ public class LichSuThueNhaEntity {
     public void setTongChiPhi(float tongChiPhi) {
         this.tongChiPhi = tongChiPhi;
     }
+
+    public LichSuThueNhaEntity() {
+    }
+
+    public LichSuThueNhaEntity(long id, NguoiDungEntity nguoiThue, NgoiNhaEntity nhaDaThue, Date ngayBatDauThue, Date ngayKetThuc, int tongNgayThue, float tongChiPhi) {
+        this.id = id;
+        this.nguoiThue = nguoiThue;
+        this.nhaDaThue = nhaDaThue;
+        this.ngayBatDauThue = ngayBatDauThue;
+        this.ngayKetThuc = ngayKetThuc;
+        this.tongNgayThue = tongNgayThue;
+        this.tongChiPhi = tongChiPhi;
+    }
 }

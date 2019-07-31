@@ -24,12 +24,18 @@ public class NguoiDungServiceImpl implements NguoiDungService {
 
     @Override
     public NguoiDungEntity findById(Long id) {
+        if (id.equals(null)){
+            return null;
+        }
         return this.nguoiDungRepository.findById(id).get();
     }
 
     @Override
-    public void save(NguoiDungEntity nguoiDungEntity) {
-        this.nguoiDungRepository.save(nguoiDungEntity);
+    public NguoiDungEntity save(NguoiDungEntity nguoiDungEntity) {
+        if (nguoiDungEntity == null){
+            return null;
+        }
+        return this.nguoiDungRepository.save(nguoiDungEntity);
     }
 
     @Override

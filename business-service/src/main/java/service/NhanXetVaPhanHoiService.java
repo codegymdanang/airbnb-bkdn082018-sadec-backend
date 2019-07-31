@@ -9,7 +9,7 @@ public interface NhanXetVaPhanHoiService {
 
     NhanXetVaPhanHoiEntity findById(Long id);
 
-    void save(NhanXetVaPhanHoiEntity nhanXetVaPhanHoiEntity);
+    NhanXetVaPhanHoiEntity save(NhanXetVaPhanHoiEntity nhanXetVaPhanHoiEntity);
 
     void remove(Long id);
 }

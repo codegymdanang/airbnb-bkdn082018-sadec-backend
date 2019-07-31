@@ -11,7 +11,7 @@ public interface NguoiDungService {
 
     NguoiDungEntity findById(Long id);
 
-    void save(NguoiDungEntity nguoiDungEntity);
+    NguoiDungEntity save(NguoiDungEntity nguoiDungEntity);
 
     void remove(Long id);
 }

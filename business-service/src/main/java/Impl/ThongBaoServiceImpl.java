@@ -24,8 +24,8 @@ public class ThongBaoServiceImpl implements ThongBaoService {
     }
 
     @Override
-    public void save(ThongBaoEntity thongBaoEntity) {
-        this.thongBaoRepository.save(thongBaoEntity);
+    public ThongBaoEntity save(ThongBaoEntity thongBaoEntity) {
+        return this.thongBaoRepository.save(thongBaoEntity);
     }
 
     @Override

@@ -149,4 +149,20 @@ public class NgoiNhaEntity {
     public void setNhanXetVaPhanHoi(Set<NhanXetVaPhanHoiEntity> nhanXetVaPhanHoi) {
         this.nhanXetVaPhanHoi = nhanXetVaPhanHoi;
     }
+
+    public NgoiNhaEntity() {
+    }
+
+    public NgoiNhaEntity(long id, NguoiDungEntity chuNha, String tenNha, int soPhongNgu, int soPhongTam, String diaChi, String loaiNha, float giaTienTheoDem, String moTaChung,  boolean tinhTrang) {
+        this.id = id;
+        this.chuNha = chuNha;
+        this.tenNha = tenNha;
+        this.soPhongNgu = soPhongNgu;
+        this.soPhongTam = soPhongTam;
+        this.diaChi = diaChi;
+        this.loaiNha = loaiNha;
+        this.giaTienTheoDem = giaTienTheoDem;
+        this.moTaChung = moTaChung;
+        this.tinhTrang = tinhTrang;
+    }
 }

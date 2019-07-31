@@ -66,4 +66,15 @@ public class NhanXetVaPhanHoiEntity {
     public void setNhanXet(NhanXetVaPhanHoiEntity nhanXet) {
         this.nhanXet = nhanXet;
     }
+
+    public NhanXetVaPhanHoiEntity() {
+    }
+
+    public NhanXetVaPhanHoiEntity(long id, NguoiDungEntity nguoiDung, NgoiNhaEntity ngoiNha, String noiDung, NhanXetVaPhanHoiEntity nhanXet) {
+        this.id = id;
+        this.nguoiDung = nguoiDung;
+        this.ngoiNha = ngoiNha;
+        this.noiDung = noiDung;
+        this.nhanXet = nhanXet;
+    }
 }

@@ -20,12 +20,15 @@ public class HinhAnhNhaServiceImpl implements HinhAnhNhaService {
 
     @Override
     public HinhAnhNhaEntity findById(Long id) {
+        if (id.equals(null)){
+            return null;
+        }
         return this.hinhAnhNhaRepository.findById(id).get();
     }
 
     @Override
-    public void save(HinhAnhNhaEntity danhGiaEntity) {
-        this.hinhAnhNhaRepository.save(danhGiaEntity);
+    public HinhAnhNhaEntity save(HinhAnhNhaEntity danhGiaEntity) {
+        return this.hinhAnhNhaRepository.save(danhGiaEntity);
     }
 
     @Override

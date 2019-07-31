@@ -2,6 +2,7 @@ package entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Table(name = "thong_bao")
@@ -79,6 +80,19 @@ public class ThongBaoEntity {
     }
 
     public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public ThongBaoEntity(long l, Date date, NguoiDungEntity nguoiDung, float v) {
+    }
+
+    public ThongBaoEntity(long id, String noiDung, boolean tinhTrang, NguoiDungEntity nguoiDung, NgoiNhaEntity ngoiNha, NhanXetVaPhanHoiEntity nhanXet, String url) {
+        this.id = id;
+        this.noiDung = noiDung;
+        this.tinhTrang = tinhTrang;
+        this.nguoiDung = nguoiDung;
+        this.ngoiNha = ngoiNha;
+        this.nhanXet = nhanXet;
         this.url = url;
     }
 }

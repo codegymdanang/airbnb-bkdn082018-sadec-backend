@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+import static java.awt.Window.log;
+
 /**
  * Copyright 2019 {@author Loda} (https://loda.me).
  * This project is licensed under the MIT license.

@@ -9,7 +9,7 @@ public interface ThuNhapThangSerVice {
 
     ThuNhapThangEntity findById(Long id);
 
-    void save(ThuNhapThangEntity thuNhapThangEntity);
+    ThuNhapThangEntity save(ThuNhapThangEntity thuNhapThangEntity);
 
     void remove(Long id);
 }

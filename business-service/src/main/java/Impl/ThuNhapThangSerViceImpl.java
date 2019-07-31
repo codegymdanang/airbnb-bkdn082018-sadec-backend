@@ -24,8 +24,8 @@ public class ThuNhapThangSerViceImpl implements ThuNhapThangSerVice {
     }
 
     @Override
-    public void save(ThuNhapThangEntity danhGiaEntity) {
-        this.thuNhapThangRepository.save(danhGiaEntity);
+    public ThuNhapThangEntity save(ThuNhapThangEntity danhGiaEntity) {
+        return this.thuNhapThangRepository.save(danhGiaEntity);
     }
 
     @Override

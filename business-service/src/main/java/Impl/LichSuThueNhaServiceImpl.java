@@ -20,12 +20,15 @@ public class LichSuThueNhaServiceImpl implements LichSuThueNhaService {
 
     @Override
     public LichSuThueNhaEntity findById(Long id) {
+        if (id.equals(null)){
+            return null;
+        }
         return this.lichSuThueNhaRepository.findById(id).get();
     }
 
     @Override
-    public void save(LichSuThueNhaEntity danhGiaEntity) {
-        this.lichSuThueNhaRepository.save(danhGiaEntity);
+    public LichSuThueNhaEntity save(LichSuThueNhaEntity danhGiaEntity) {
+        return this.lichSuThueNhaRepository.save(danhGiaEntity);
     }
 
     @Override

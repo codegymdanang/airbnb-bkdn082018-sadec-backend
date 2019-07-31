@@ -20,12 +20,15 @@ public class DanhGiaServiceImpl implements DanhGiaService {
 
     @Override
     public DanhGiaEntity findById(Long id) {
+        if (id.equals(null)){
+            return null;
+        }
         return this.danhGiaRepository.findById(id).get();
     }
 
     @Override
-    public void save(DanhGiaEntity danhGiaEntity) {
-        this.danhGiaRepository.save(danhGiaEntity);
+    public DanhGiaEntity save(DanhGiaEntity danhGiaEntity) {
+        return this.danhGiaRepository.save(danhGiaEntity);
     }
 
     @Override

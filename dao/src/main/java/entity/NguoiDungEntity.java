@@ -90,4 +90,16 @@ public class NguoiDungEntity {
         this.diaChi = diaChi;
     }
 
+    public NguoiDungEntity(long id, String tenNguoiDung, String matKhau, String hoTen, String soDienThoai, String email, String diaChi) {
+        this.id = id;
+        this.tenNguoiDung = tenNguoiDung;
+        this.matKhau = matKhau;
+        this.hoTen = hoTen;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
+        this.diaChi = diaChi;
+    }
+
+    public NguoiDungEntity() {
+    }
 }
