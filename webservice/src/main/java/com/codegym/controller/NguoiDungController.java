@@ -32,11 +32,20 @@ public class NguoiDungController {
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
+    @GetMapping(value = "/kiem_tra_nguoi_dung", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Boolean> kiemTraNguoiDung(@RequestParam("name") String tenNguoiDung){
+        NguoiDungEntity nguoiDungEntity = this.nguoiDungService.findByTenNguoiDung(tenNguoiDung);
+        if (nguoiDungEntity == null){
+            return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.OK);
+        }
+        return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/nguoi_dung", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<NguoiDungEntity> nguoiDung(@RequestParam("name") String tenNguoiDung){
         NguoiDungEntity nguoiDungEntity = this.nguoiDungService.findByTenNguoiDung(tenNguoiDung);
         if (nguoiDungEntity == null){
-            return new ResponseEntity<NguoiDungEntity>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<NguoiDungEntity>( HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<NguoiDungEntity>(nguoiDungEntity, HttpStatus.OK);
     }

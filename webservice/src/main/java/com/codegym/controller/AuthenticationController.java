@@ -29,6 +29,6 @@ public class AuthenticationController {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.generateToken((CustomUserDetails) authentication.getPrincipal());
-        return new ResponseEntity<>(new LoginResponse(jwt), HttpStatus.OK);
+        return new ResponseEntity<>(new LoginResponse(jwt, loginRequest.getUsername()), HttpStatus.OK);
     }
 }

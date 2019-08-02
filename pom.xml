@@ -14,7 +14,6 @@
     <module>dao</module>
   </modules>
   <packaging>pom</packaging>
-
   <name>AirBnB</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>

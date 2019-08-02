@@ -12,6 +12,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -27,12 +29,11 @@ import java.net.InetAddress;
 @EnableJpaRepositories(basePackages = "jpaRepository")
 @EnableElasticsearchRepositories(basePackages = "elasticsearchRepository")
 @ComponentScan(basePackages = {"service", "Impl", "entity", "com.codegym.controller","com.codegym.user"}, basePackageClasses = WebSecurityConfig.class)
-public class WebService implements CommandLineRunner {
+public class WebService extends SpringBootServletInitializer implements CommandLineRunner  {
 
     public static void main(String[] args) {
         SpringApplication.run(WebService.class, args);
     }
-
 
     @Autowired
     private NguoiDungRepository nguoiDungRepository;
@@ -67,5 +68,10 @@ public class WebService implements CommandLineRunner {
         } catch (Exception e) {
             System.out.println("Null");
         }
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+        return builder.sources((WebService.class));
     }
 }
