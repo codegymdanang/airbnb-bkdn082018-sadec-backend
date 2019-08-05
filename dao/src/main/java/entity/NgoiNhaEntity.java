@@ -130,7 +130,7 @@ public class NgoiNhaEntity {
         this.tinhTrang = tinhTrang;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "ngoiNha")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "ngoiNha")
     @JsonManagedReference(value = "hinhAnh")
     public Set<HinhAnhNhaEntity> getHinhAnhNha() {
         return hinhAnhNha;

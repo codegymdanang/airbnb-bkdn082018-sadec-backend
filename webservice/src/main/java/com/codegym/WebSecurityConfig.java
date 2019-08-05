@@ -61,11 +61,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-            .authorizeRequests().antMatchers(HttpMethod.POST, "/nguoi_dung").permitAll().and()
-            .authorizeRequests().antMatchers(HttpMethod.GET, "/nguoi_dung**").permitAll().and()
+        http.cors().and().csrf().disable()
+            .authorizeRequests().antMatchers( "/nguoi_dung").permitAll().and()
+            .authorizeRequests().antMatchers("/kiem_tra_nguoi_dung").permitAll().and()
             .authorizeRequests().antMatchers("/login").permitAll().and()
-            .authorizeRequests().antMatchers("/user").authenticated();
+            .authorizeRequests().antMatchers( "/").permitAll().and()
+            .authorizeRequests().anyRequest().authenticated();
 
         // Thêm một lớp Filter kiểm tra jwt
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -1,6 +1,8 @@
 package com.codegym.controller;
 
+import com.codegym.jwt.JwtTokenProvider;
 import entity.NgoiNhaEntity;
+import entity.NguoiDungEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,20 +14,20 @@ import service.NgoiNhaService;
 
 import java.util.List;
 
-//@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class NgoiNhaController {
     @Autowired
     private NgoiNhaService ngoiNhaService;
 
     @PostMapping(value = "/nha")
-    public ResponseEntity<Void> taoNha(@RequestBody NgoiNhaEntity ngoiNhaEntity, UriComponentsBuilder uriComponentsBuilder){
-        this.ngoiNhaService.save(ngoiNhaEntity);
+    public ResponseEntity<NgoiNhaEntity> taoNha(@RequestBody NgoiNhaEntity ngoiNhaEntity, UriComponentsBuilder uriComponentsBuilder){
+        NgoiNhaEntity ngoiNhaResponse = this.ngoiNhaService.save(ngoiNhaEntity);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uriComponentsBuilder.path("/nha/{id}").buildAndExpand(ngoiNhaEntity.getId()).toUri());
 
-        return new ResponseEntity<Void>(headers, HttpStatus.OK);
+        return new ResponseEntity<NgoiNhaEntity>(ngoiNhaEntity, HttpStatus.OK);
     }
 
     @GetMapping(value = "/nha")

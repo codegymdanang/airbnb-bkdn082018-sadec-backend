@@ -30,9 +30,9 @@ public class NgoiNhaServiceImpl implements NgoiNhaService {
     }
 
     @Override
-    public void save(NgoiNhaEntity ngoiNhaEntity) {
+    public NgoiNhaEntity save(NgoiNhaEntity ngoiNhaEntity) {
         this.ngoiNhaESRepository.save(ngoiNhaEntity);
-        this.ngoiNhaRepository.save(ngoiNhaEntity);
+        return this.ngoiNhaRepository.save(ngoiNhaEntity);
     }
 
     @Override

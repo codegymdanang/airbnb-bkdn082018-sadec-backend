@@ -20,8 +20,9 @@ public class NguoiDungController {
     private NguoiDungService nguoiDungService;
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @PostMapping(value = "/nguoi_dung")
-    public ResponseEntity<Void> taoNguoiDung(@RequestBody NguoiDungEntity nguoiDungEntity, UriComponentsBuilder uriComponentsBuilder){
+    @PostMapping(value = "/nguoi_dung", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> taoNguoiDung(@RequestBody NguoiDungEntity nguoiDungEntity,
+                                             UriComponentsBuilder uriComponentsBuilder){
         NguoiDungEntity nguoiDung = nguoiDungService.findByTenNguoiDung(nguoiDungEntity.getTenNguoiDung());
 
         nguoiDungEntity.setMatKhau(passwordEncoder.encode(nguoiDungEntity.getMatKhau()));
