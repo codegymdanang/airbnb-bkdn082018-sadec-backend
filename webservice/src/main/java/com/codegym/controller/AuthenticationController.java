@@ -1,9 +1,9 @@
 package com.codegym.controller;
 
-import com.codegym.jwt.JwtTokenProvider;
-import com.codegym.payload.LoginRequest;
-import com.codegym.payload.LoginResponse;
-import com.codegym.user.CustomUserDetails;
+import com.codegym.security.jwt.JwtTokenProvider;
+import com.codegym.security.payload.LoginRequest;
+import com.codegym.security.payload.LoginResponse;
+import com.codegym.security.user.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
