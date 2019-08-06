@@ -62,10 +62,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-            .authorizeRequests().antMatchers( "/nguoi_dung").permitAll().and()
-            .authorizeRequests().antMatchers("/kiem_tra_nguoi_dung").permitAll().and()
-            .authorizeRequests().antMatchers("/login").permitAll().and()
-            .authorizeRequests().antMatchers( "/").permitAll().and()
+            .authorizeRequests().antMatchers(
+             "/kiem_tra_nguoi_dung", "/login",
+            "/nha/findBySoPhongTam/{soPhongNgu}", "/nha/findBySoPhongNgu/{soPhongNgu}",
+            "/nha/findByGiaPhongTheoDem","/nha","/nha/{id}").permitAll().and()
+            .authorizeRequests().antMatchers(HttpMethod.POST, "/nguoi_dung").permitAll().and()
             .authorizeRequests().anyRequest().authenticated();
 
         // Thêm một lớp Filter kiểm tra jwt

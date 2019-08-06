@@ -43,22 +43,22 @@ public class NgoiNhaServiceImpl implements NgoiNhaService {
 
     @Override
     public List<NgoiNhaEntity> findBySoPhongNgu(int soPhongNgu) {
-        return this.ngoiNhaESRepository.findBySoPhongNgu(soPhongNgu);
+        return this.ngoiNhaRepository.findAllBySoPhongNgu(soPhongNgu);
     }
 
     @Override
     public List<NgoiNhaEntity> findBySoPhongTam(int soPhongTam) {
-        return this.ngoiNhaESRepository.findBySoPhongTam(soPhongTam);
+        return this.ngoiNhaRepository.findAllBySoPhongTam(soPhongTam);
     }
 
     @Override
     public List<NgoiNhaEntity> findByDiaChi(String diaChi) {
-        return this.ngoiNhaESRepository.findByDiaChi(diaChi);
+        return this.ngoiNhaRepository.findAllByDiaChi(diaChi);
     }
 
     @Override
     public List<NgoiNhaEntity> findByGiaTienTheoDemBetween(float min, float max) {
-        return this.ngoiNhaESRepository.findByGiaTienTheoDemBetween(min, max);
+        return this.ngoiNhaRepository.findAllByGiaTienTheoDemBetween(min, max);
     }
 
 }

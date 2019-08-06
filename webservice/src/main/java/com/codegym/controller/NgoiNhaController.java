@@ -83,4 +83,25 @@ public class NgoiNhaController {
         return new ResponseEntity<>(ngoiNhaEntities, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/nha/findBySoPhongTam/{soPhongNgu}")
+    public ResponseEntity<List<NgoiNhaEntity>> findBySoPhongTam(@PathVariable int soPhongTam){
+        List<NgoiNhaEntity> ngoiNhaEntities = this.ngoiNhaService.findBySoPhongTam(soPhongTam);
+
+        if (ngoiNhaEntities.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(ngoiNhaEntities, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/nha/findByGiaPhongTheoDem")
+    public ResponseEntity<List<NgoiNhaEntity>> findByGiaPhongTheoDem(@RequestParam int min, @RequestParam int max){
+        List<NgoiNhaEntity> ngoiNhaEntities = this.ngoiNhaService.findByGiaTienTheoDemBetween(min, max);
+
+        if (ngoiNhaEntities.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(ngoiNhaEntities, HttpStatus.OK);
+    }
 }
