@@ -249,4 +249,7 @@
         <modifyDataType tableName="nguoi_dung" columnName="mat_khau" newDataType="text"/>
     </changeSet>
 
+    <changeSet id="12345" author="hoang">
+        <modifyDataType tableName="hinh_anh_nha" columnName="hinh_anh" newDataType="longblob"/>
+    </changeSet>
 </databaseChangeLog>

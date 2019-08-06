@@ -1,32 +1,11 @@
-package com.codegym.jwt;
-/*******************************************************
- * For Vietnamese readers:
- *    Các bạn thân mến, mình rất vui nếu project này giúp 
- * ích được cho các bạn trong việc học tập và công việc. Nếu 
- * bạn sử dụng lại toàn bộ hoặc một phần source code xin để 
- * lại dường dẫn tới github hoặc tên tác giá.
- *    Xin cảm ơn!
- *******************************************************/
-
-
-import com.codegym.user.CustomUserDetails;
-import entity.NguoiDungEntity;
+package com.codegym.security.jwt;
+import com.codegym.security.user.CustomUserDetails;
 import io.jsonwebtoken.*;
-import jpaRepository.NguoiDungRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import service.NguoiDungService;
 
 import java.util.Date;
 
-/**
- * Copyright 2019 {@author Loda} (https://loda.me).
- * This project is licensed under the MIT license.
- *
- * @since 5/1/2019
- * Github: https://github.com/loda-kun
- */
 @Component
 @Slf4j
 public class JwtTokenProvider {
@@ -34,10 +13,8 @@ public class JwtTokenProvider {
     private final long JWT_EXPIRATION = 604800000L;
 
     public String generateToken(CustomUserDetails userDetails) {
-        // Lấy thông tin user
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
-        // Tạo chuỗi json web token từ id của user.
         return Jwts.builder()
                    .setSubject(Long.toString(userDetails.getUser().getId()))
                    .setIssuedAt(now)

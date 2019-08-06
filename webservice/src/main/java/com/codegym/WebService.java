@@ -1,5 +1,6 @@
 package com.codegym;
 
+import com.codegym.security.WebSecurityConfig;
 import jpaRepository.NguoiDungRepository;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
@@ -19,7 +20,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.MultipartFilter;
 
@@ -31,7 +31,7 @@ import java.net.InetAddress;
 @EntityScan(basePackages = "entity")
 @EnableJpaRepositories(basePackages = "jpaRepository")
 @EnableElasticsearchRepositories(basePackages = "elasticsearchRepository")
-@ComponentScan(basePackages = {"service", "Impl", "entity", "com.codegym.controller","com.codegym.user"}, basePackageClasses = WebSecurityConfig.class)
+@ComponentScan(basePackages = {"service", "Impl", "entity", "com.codegym.controller", "com.codegym.security.user"}, basePackageClasses = WebSecurityConfig.class)
 public class WebService extends SpringBootServletInitializer{
 
     public static void main(String[] args) {

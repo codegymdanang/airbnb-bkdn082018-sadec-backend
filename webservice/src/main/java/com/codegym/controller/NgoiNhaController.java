@@ -1,8 +1,6 @@
 package com.codegym.controller;
 
-import com.codegym.jwt.JwtTokenProvider;
 import entity.NgoiNhaEntity;
-import entity.NguoiDungEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
