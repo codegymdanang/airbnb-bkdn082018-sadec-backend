@@ -10,9 +10,13 @@ package com.codegym.jwt;
 
 
 import com.codegym.user.CustomUserDetails;
+import entity.NguoiDungEntity;
 import io.jsonwebtoken.*;
+import jpaRepository.NguoiDungRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import service.NguoiDungService;
 
 import java.util.Date;
 
@@ -26,7 +30,7 @@ import java.util.Date;
 @Component
 @Slf4j
 public class JwtTokenProvider {
-    private final String JWT_SECRET = "lodaaaaaa";
+    private final String JWT_SECRET = "airbnb";
     private final long JWT_EXPIRATION = 604800000L;
 
     public String generateToken(CustomUserDetails userDetails) {

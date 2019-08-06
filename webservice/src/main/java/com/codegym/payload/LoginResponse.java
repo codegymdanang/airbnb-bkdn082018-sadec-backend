@@ -21,8 +21,9 @@ import lombok.Data;
 public class LoginResponse {
     private String accessToken;
     private String tokenType = "Bearer";
-
-    public LoginResponse(String accessToken) {
+    private String username;
+    public LoginResponse(String accessToken, String username) {
+        this.username = username;
         this.accessToken = accessToken;
     }
 }

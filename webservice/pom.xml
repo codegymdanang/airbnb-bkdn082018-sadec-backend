@@ -12,7 +12,7 @@
     <artifactId>webservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>webservice</name>
-
+<packaging>war</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -133,6 +133,17 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

@@ -9,7 +9,7 @@ public interface NgoiNhaService {
 
     NgoiNhaEntity findById(long id);
 
-    void save(NgoiNhaEntity ngoiNhaEntity);
+    NgoiNhaEntity save(NgoiNhaEntity ngoiNhaEntity);
 
     void remove(Long id);
 

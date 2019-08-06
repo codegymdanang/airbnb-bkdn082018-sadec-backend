@@ -8,15 +8,20 @@ import org.elasticsearch.common.transport.TransportAddress;
 import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.MultipartFilter;
 
 import java.net.InetAddress;
 
@@ -27,12 +32,11 @@ import java.net.InetAddress;
 @EnableJpaRepositories(basePackages = "jpaRepository")
 @EnableElasticsearchRepositories(basePackages = "elasticsearchRepository")
 @ComponentScan(basePackages = {"service", "Impl", "entity", "com.codegym.controller","com.codegym.user"}, basePackageClasses = WebSecurityConfig.class)
-public class WebService implements CommandLineRunner {
+public class WebService extends SpringBootServletInitializer{
 
     public static void main(String[] args) {
         SpringApplication.run(WebService.class, args);
     }
-
 
     @Autowired
     private NguoiDungRepository nguoiDungRepository;
@@ -45,6 +49,21 @@ public class WebService implements CommandLineRunner {
 
     @Value("${elasticsearch.clustername}")
     private String EsClusterName;
+
+    @Bean
+    public CommonsMultipartResolver commonsMultipartResolver() {
+        final CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setMaxUploadSize(-1);
+        return commonsMultipartResolver;
+    }
+
+    @Bean
+    public FilterRegistrationBean multipartFilterRegistrationBean() {
+        final MultipartFilter multipartFilter = new MultipartFilter();
+        final FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(multipartFilter);
+        filterRegistrationBean.addInitParameter("multipartResolverBeanName", "commonsMultipartResolver");
+        return filterRegistrationBean;
+    }
 
     @Bean
     public Client client() throws Exception {
@@ -61,11 +80,7 @@ public class WebService implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        try {
-            System.out.println(nguoiDungRepository.findByTenNguoiDung("hoangpv6681"));
-        } catch (Exception e) {
-            System.out.println("Null");
-        }
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+        return builder.sources((WebService.class));
     }
 }
