@@ -82,8 +82,8 @@ public class NgoiNhaController {
     }
 
     @GetMapping(value = "/nha/findBySoPhongTam/{soPhongNgu}")
-    public ResponseEntity<List<NgoiNhaEntity>> findBySoPhongTam(@PathVariable int soPhongTam){
-        List<NgoiNhaEntity> ngoiNhaEntities = this.ngoiNhaService.findBySoPhongTam(soPhongTam);
+    public ResponseEntity<List<NgoiNhaEntity>> findBySoPhongTam(@PathVariable int soPhongNgu){
+        List<NgoiNhaEntity> ngoiNhaEntities = this.ngoiNhaService.findBySoPhongTam(soPhongNgu);
 
         if (ngoiNhaEntities.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
